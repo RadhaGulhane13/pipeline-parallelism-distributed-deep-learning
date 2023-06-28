@@ -1,0 +1,414 @@
+(deepspeed) [rgulhane@o0762 Pipeline_Parallelism]$ deepspeed -H hosts AlexNet_pipeline_parallelism.py --deepspeed_config=ds_config.json -p 0 --steps=50
+
+
+   This system is for the use of authorized users only.  Individuals using
+   this computer system without authority, or in excess of their authority,
+   are subject to having all of their activities on this system monitored
+   and recorded by system personnel.  In the course of monitoring individuals
+   improperly using this system, or in the course of system maintenance,
+   the activities of authorized users may also be monitored.  Anyone using
+   this system expressly consents to such monitoring and is advised that if
+   such monitoring reveals possible evidence of criminal activity, system
+   personnel may provide the evidence of such monitoring to law enforcement
+   officials.
+
+
+[2022-12-09 201804,312] [INFO] [runner.py417main] Using IP address of 10.2.15.21 for node o0762
+[2022-12-09 201804,313] [INFO] [runner.py508main] cmd = fsessPAS2312owensminiconda3envsdeepspeedbinpython -u -m deepspeed.launcher.launch --world_info=eyJvMDc2MiI6IFswXX0= --master_addr=10.2.15.21 --master_port=29500 AlexNet_pipeline_parallelism.py --deepspeed_config=ds_config.json -p 0 --steps=50
+[2022-12-09 201807,270] [INFO] [launch.py142main] WORLD INFO DICT {'o0762' [0]}
+[2022-12-09 201807,270] [INFO] [launch.py148main] nnodes=1, num_local_procs=1, node_rank=0
+[2022-12-09 201807,270] [INFO] [launch.py161main] global_rank_mapping=defaultdict(class 'list', {'o0762' [0]})
+[2022-12-09 201807,270] [INFO] [launch.py162main] dist_world_size=1
+[2022-12-09 201807,270] [INFO] [launch.py164main] Setting CUDA_VISIBLE_DEVICES=0
+[2022-12-09 201810,813] [INFO] [comm.py633init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+Files already downloaded and verified
+[2022-12-09 201813,562] [INFO] [logging.py68log_dist] [Rank 0] DeepSpeed info version=0.7.5, git-hash=unknown, git-branch=unknown
+fsessPAS2312owensminiconda3envsdeepspeedlibpython3.9site-packagestorchdistributeddistributed_c10d.py429 UserWarning torch.distributed.distributed_c10d._get_global_rank is deprecated please use torch.distributed.distributed_c10d.get_global_rank instead
+  warnings.warn(
+[2022-12-09 201813,661] [INFO] [logging.py68log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled False
+Using usersPAS2312rgulhane.cachetorch_extensionspy39_cu116 as PyTorch extensions root...
+Detected CUDA files, patching ldflags
+Emitting ninja build file usersPAS2312rgulhane.cachetorch_extensionspy39_cu116fused_adambuild.ninja...
+Building extension module fused_adam...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja no work to do.
+Loading extension module fused_adam...
+Time to load fused_adam op 0.6682600975036621 seconds
+[2022-12-09 201814,901] [INFO] [logging.py68log_dist] [Rank 0] Using DeepSpeed Optimizer param name adam as basic optimizer
+[2022-12-09 201814,902] [INFO] [logging.py68log_dist] [Rank 0] DeepSpeed Basic Optimizer = FusedAdam
+[2022-12-09 201814,902] [INFO] [logging.py68log_dist] [Rank 0] DeepSpeed Final Optimizer = adam
+[2022-12-09 201814,902] [INFO] [logging.py68log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2022-12-09 201814,903] [INFO] [logging.py68log_dist] [Rank 0] DeepSpeed LR Scheduler = None
+[2022-12-09 201814,903] [INFO] [logging.py68log_dist] [Rank 0] step=0, skipped=0, lr=[0.001], mom=[[0.9, -0.999]]
+[2022-12-09 201814,903] [INFO] [config.py1007print] DeepSpeedEngine configuration
+[2022-12-09 201814,904] [INFO] [config.py1011print]   activation_checkpointing_config  {
+    partition_activations false, 
+    contiguous_memory_optimization false, 
+    cpu_checkpointing false, 
+    number_checkpoints null, 
+    synchronize_checkpoint_boundary false, 
+    profile false
+}
+[2022-12-09 201814,904] [INFO] [config.py1011print]   aio_config ................... {'block_size' 1048576, 'queue_depth' 8, 'thread_count' 1, 'single_submit' False, 'overlap_events' True}
+[2022-12-09 201814,904] [INFO] [config.py1011print]   amp_enabled .................. False
+[2022-12-09 201814,904] [INFO] [config.py1011print]   amp_params ................... False
+[2022-12-09 201814,905] [INFO] [config.py1011print]   autotuning_config ............ {
+    enabled false, 
+    start_step null, 
+    end_step null, 
+    metric_path null, 
+    arg_mappings null, 
+    metric throughput, 
+    model_info null, 
+    results_dir usersPAS2312rgulhaneowenslab3Pipeline_Parallelismautotuning_results, 
+    exps_dir usersPAS2312rgulhaneowenslab3Pipeline_Parallelismautotuning_exps, 
+    overwrite true, 
+    fast true, 
+    start_profile_step 3, 
+    end_profile_step 5, 
+    tuner_type gridsearch, 
+    tuner_early_stopping 5, 
+    tuner_num_trials 50, 
+    model_info_path null, 
+    mp_size 1, 
+    max_train_batch_size null, 
+    min_train_batch_size 1, 
+    max_train_micro_batch_size_per_gpu 1.024000e+03, 
+    min_train_micro_batch_size_per_gpu 1, 
+    num_tuning_micro_batch_sizes 3
+}
+[2022-12-09 201814,905] [INFO] [config.py1011print]   bfloat16_enabled ............. False
+[2022-12-09 201814,906] [INFO] [config.py1011print]   checkpoint_parallel_write_pipeline  False
+[2022-12-09 201814,906] [INFO] [config.py1011print]   checkpoint_tag_validation_enabled  True
+[2022-12-09 201814,906] [INFO] [config.py1011print]   checkpoint_tag_validation_fail  False
+[2022-12-09 201814,906] [INFO] [config.py1011print]   comms_config ................. deepspeed.comm.config.DeepSpeedCommsConfig object at 0x2ae594cb43a0
+[2022-12-09 201814,906] [INFO] [config.py1011print]   communication_data_type ...... None
+[2022-12-09 201814,906] [INFO] [config.py1011print]   compression_config ........... {'weight_quantization' {'shared_parameters' {'enabled' False, 'quantizer_kernel' False, 'schedule_offset' 0, 'quantize_groups' 1, 'quantize_verbose' False, 'quantization_type' 'symmetric', 'quantize_weight_in_forward' False, 'rounding' 'nearest', 'fp16_mixed_quantize' False, 'quantize_change_ratio' 0.001}, 'different_groups' {}}, 'activation_quantization' {'shared_parameters' {'enabled' False, 'quantization_type' 'symmetric', 'range_calibration' 'dynamic', 'schedule_offset' 1000}, 'different_groups' {}}, 'sparse_pruning' {'shared_parameters' {'enabled' False, 'method' 'l1', 'schedule_offset' 1000}, 'different_groups' {}}, 'row_pruning' {'shared_parameters' {'enabled' False, 'method' 'l1', 'schedule_offset' 1000}, 'different_groups' {}}, 'head_pruning' {'shared_parameters' {'enabled' False, 'method' 'topk', 'schedule_offset' 1000}, 'different_groups' {}}, 'channel_pruning' {'shared_parameters' {'enabled' False, 'method' 'l1', 'schedule_offset' 1000}, 'different_groups' {}}, 'layer_reduction' {'enabled' False}}
+[2022-12-09 201814,906] [INFO] [config.py1011print]   curriculum_enabled ........... False
+[2022-12-09 201814,906] [INFO] [config.py1011print]   curriculum_params ............ False
+[2022-12-09 201814,906] [INFO] [config.py1011print]   dataloader_drop_last ......... False
+[2022-12-09 201814,906] [INFO] [config.py1011print]   disable_allgather ............ False
+[2022-12-09 201814,906] [INFO] [config.py1011print]   dump_state ................... False
+[2022-12-09 201814,907] [INFO] [config.py1011print]   dynamic_loss_scale_args ...... None
+[2022-12-09 201814,907] [INFO] [config.py1011print]   eigenvalue_enabled ........... False
+[2022-12-09 201814,907] [INFO] [config.py1011print]   eigenvalue_gas_boundary_resolution  1
+[2022-12-09 201814,907] [INFO] [config.py1011print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2022-12-09 201814,907] [INFO] [config.py1011print]   eigenvalue_layer_num ......... 0
+[2022-12-09 201814,907] [INFO] [config.py1011print]   eigenvalue_max_iter .......... 100
+[2022-12-09 201814,907] [INFO] [config.py1011print]   eigenvalue_stability ......... 1e-06
+[2022-12-09 201814,907] [INFO] [config.py1011print]   eigenvalue_tol ............... 0.01
+[2022-12-09 201814,907] [INFO] [config.py1011print]   eigenvalue_verbose ........... False
+[2022-12-09 201814,907] [INFO] [config.py1011print]   elasticity_enabled ........... False
+[2022-12-09 201814,907] [INFO] [config.py1011print]   flops_profiler_config ........ {
+    enabled false, 
+    profile_step 1, 
+    module_depth -1, 
+    top_modules 1, 
+    detailed true, 
+    output_file null
+}
+[2022-12-09 201814,908] [INFO] [config.py1011print]   fp16_auto_cast ............... None
+[2022-12-09 201814,908] [INFO] [config.py1011print]   fp16_enabled ................. False
+[2022-12-09 201814,908] [INFO] [config.py1011print]   fp16_master_weights_and_gradients  False
+[2022-12-09 201814,908] [INFO] [config.py1011print]   global_rank .................. 0
+[2022-12-09 201814,908] [INFO] [config.py1011print]   gradient_accumulation_steps .. 4
+[2022-12-09 201814,908] [INFO] [config.py1011print]   gradient_clipping ............ 0.0
+[2022-12-09 201814,908] [INFO] [config.py1011print]   gradient_predivide_factor .... 1.0
+[2022-12-09 201814,908] [INFO] [config.py1011print]   initial_dynamic_scale ........ 4294967296
+[2022-12-09 201814,908] [INFO] [config.py1011print]   load_universal_checkpoint .... False
+[2022-12-09 201814,908] [INFO] [config.py1011print]   loss_scale ................... 0
+[2022-12-09 201814,908] [INFO] [config.py1011print]   memory_breakdown ............. False
+[2022-12-09 201814,908] [INFO] [config.py1011print]   monitor_config ............... deepspeed.monitor.config.DeepSpeedMonitorConfig object at 0x2ae594cb43d0
+[2022-12-09 201814,908] [INFO] [config.py1011print]   nebula_config ................ {
+    enabled false, 
+    persistent_storage_path null, 
+    persistent_time_interval 100, 
+    num_of_version_in_retention 2, 
+    enable_nebula_load true, 
+    load_path null
+}
+[2022-12-09 201814,909] [INFO] [config.py1011print]   optimizer_legacy_fusion ...... False
+[2022-12-09 201814,909] [INFO] [config.py1011print]   optimizer_name ............... adam
+[2022-12-09 201814,909] [INFO] [config.py1011print]   optimizer_params ............. {'lr' 0.001, 'betas' [0.9, -0.999], 'eps' 1e-08}
+[2022-12-09 201814,909] [INFO] [config.py1011print]   pipeline ..................... {'stages' 'auto', 'partition' 'best', 'seed_layers' False, 'activation_checkpoint_interval' 0}
+[2022-12-09 201814,909] [INFO] [config.py1011print]   pld_enabled .................. False
+[2022-12-09 201814,909] [INFO] [config.py1011print]   pld_params ................... False
+[2022-12-09 201814,909] [INFO] [config.py1011print]   prescale_gradients ........... False
+[2022-12-09 201814,909] [INFO] [config.py1011print]   scheduler_name ............... None
+[2022-12-09 201814,909] [INFO] [config.py1011print]   scheduler_params ............. None
+[2022-12-09 201814,909] [INFO] [config.py1011print]   sparse_attention ............. None
+[2022-12-09 201814,909] [INFO] [config.py1011print]   sparse_gradients_enabled ..... False
+[2022-12-09 201814,910] [INFO] [config.py1011print]   steps_per_print .............. 10
+[2022-12-09 201814,910] [INFO] [config.py1011print]   train_batch_size ............. 512
+[2022-12-09 201814,910] [INFO] [config.py1011print]   train_micro_batch_size_per_gpu  128
+[2022-12-09 201814,910] [INFO] [config.py1011print]   use_node_local_storage ....... False
+[2022-12-09 201814,910] [INFO] [config.py1011print]   wall_clock_breakdown ......... False
+[2022-12-09 201814,910] [INFO] [config.py1011print]   world_size ................... 1
+[2022-12-09 201814,910] [INFO] [config.py1011print]   zero_allow_untested_optimizer  False
+[2022-12-09 201814,910] [INFO] [config.py1011print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500000000 allgather_partitions=True allgather_bucket_size=500000000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1000000000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50000000 param_persistence_threshold=100000 model_persistence_threshold=9223372036854775807 max_live_parameters=1000000000 max_reuse_distance=1000000000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False
+[2022-12-09 201814,910] [INFO] [config.py1011print]   zero_enabled ................. False
+[2022-12-09 201814,910] [INFO] [config.py1011print]   zero_optimization_stage ...... 0
+[2022-12-09 201814,911] [INFO] [config.py996print_user_config]   json = {
+    train_batch_size 512, 
+    train_micro_batch_size_per_gpu 128, 
+    optimizer {
+        type Adam, 
+        params {
+            lr 0.001, 
+            betas [0.9, -0.999], 
+            eps 1e-08
+        }
+    }, 
+    steps_per_print 10, 
+    wall_clock_breakdown false
+}
+Using usersPAS2312rgulhane.cachetorch_extensionspy39_cu116 as PyTorch extensions root...
+Emitting ninja build file usersPAS2312rgulhane.cachetorch_extensionspy39_cu116utilsbuild.ninja...
+Building extension module utils...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja no work to do.
+Loading extension module utils...
+Time to load utils op 0.6583688259124756 seconds
+[2022-12-09 201818,642] [INFO] [timer.py198stop] 010, RunningAvgSamplesPerSec=1249.479199140282, CurrSamplesPerSec=1301.7135153745812, MemAllocated=0.95GB, MaxMemAllocated=1.61GB
+[2022-12-09 201819,860] [INFO] [timer.py198stop] 020, RunningAvgSamplesPerSec=1131.942270885292, CurrSamplesPerSec=1390.4682420462668, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+[2022-12-09 201821,042] [INFO] [timer.py198stop] 030, RunningAvgSamplesPerSec=1114.6401196531624, CurrSamplesPerSec=1407.5251540915872, MemAllocated=0.95GB, MaxMemAllocated=1.61GB
+step  10   50 loss nan
+[2022-12-09 201822,174] [INFO] [logging.py68log_dist] [Rank 0] step=10, skipped=0, lr=[0.001], mom=[[0.9, -0.999]]
+[2022-12-09 201822,235] [INFO] [timer.py198stop] 040, RunningAvgSamplesPerSec=1105.5401255121722, CurrSamplesPerSec=1357.5069269728408, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+[2022-12-09 201823,606] [INFO] [timer.py198stop] 050, RunningAvgSamplesPerSec=1065.0733693590153, CurrSamplesPerSec=766.0654322960663, MemAllocated=0.95GB, MaxMemAllocated=1.61GB
+[2022-12-09 201824,879] [INFO] [timer.py198stop] 060, RunningAvgSamplesPerSec=1054.648825338088, CurrSamplesPerSec=717.0315396111606, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+[2022-12-09 201826,174] [INFO] [timer.py198stop] 070, RunningAvgSamplesPerSec=1044.5971039481822, CurrSamplesPerSec=751.2025096476475, MemAllocated=0.95GB, MaxMemAllocated=1.61GB
+step  20   50 loss nan
+[2022-12-09 201827,487] [INFO] [logging.py68log_dist] [Rank 0] step=20, skipped=0, lr=[0.001], mom=[[0.9, -0.999]]
+[2022-12-09 201827,546] [INFO] [timer.py198stop] 080, RunningAvgSamplesPerSec=1029.084187929326, CurrSamplesPerSec=732.3347069615807, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+[2022-12-09 201828,846] [INFO] [timer.py198stop] 090, RunningAvgSamplesPerSec=1024.0580421746922, CurrSamplesPerSec=723.4501534837717, MemAllocated=0.95GB, MaxMemAllocated=1.61GB
+[2022-12-09 201830,073] [INFO] [timer.py198stop] 0100, RunningAvgSamplesPerSec=1026.1784527165862, CurrSamplesPerSec=736.2656350069461, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+[2022-12-09 201831,281] [INFO] [timer.py198stop] 0110, RunningAvgSamplesPerSec=1029.3181856970718, CurrSamplesPerSec=740.9643575315675, MemAllocated=0.95GB, MaxMemAllocated=1.61GB
+step  30   50 loss nan
+[2022-12-09 201832,468] [INFO] [logging.py68log_dist] [Rank 0] step=30, skipped=0, lr=[0.001], mom=[[0.9, -0.999]]
+[2022-12-09 201832,527] [INFO] [timer.py198stop] 0120, RunningAvgSamplesPerSec=1029.3425297000717, CurrSamplesPerSec=730.716971681652, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+[2022-12-09 201833,771] [INFO] [timer.py198stop] 0130, RunningAvgSamplesPerSec=1029.415451991125, CurrSamplesPerSec=750.312232890305, MemAllocated=0.95GB, MaxMemAllocated=1.61GB
+[2022-12-09 201835,075] [INFO] [timer.py198stop] 0140, RunningAvgSamplesPerSec=1025.9196500383161, CurrSamplesPerSec=771.5735578380973, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+[2022-12-09 201836,367] [INFO] [timer.py198stop] 0150, RunningAvgSamplesPerSec=1023.6210492847836, CurrSamplesPerSec=750.6720787710068, MemAllocated=0.95GB, MaxMemAllocated=1.61GB
+step  40   50 loss nan
+[2022-12-09 201837,570] [INFO] [logging.py68log_dist] [Rank 0] step=40, skipped=0, lr=[0.001], mom=[[0.9, -0.999]]
+[2022-12-09 201837,631] [INFO] [timer.py198stop] 0160, RunningAvgSamplesPerSec=1023.0109073472282, CurrSamplesPerSec=1393.735022832117, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+[2022-12-09 201838,876] [INFO] [timer.py198stop] 0170, RunningAvgSamplesPerSec=1023.406524403283, CurrSamplesPerSec=811.229560636991, MemAllocated=0.95GB, MaxMemAllocated=1.61GB
+[2022-12-09 201840,297] [INFO] [timer.py198stop] 0180, RunningAvgSamplesPerSec=1015.7221971582828, CurrSamplesPerSec=532.6702742175206, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+[2022-12-09 201841,476] [INFO] [timer.py198stop] 0190, RunningAvgSamplesPerSec=1019.3209095802019, CurrSamplesPerSec=1366.3236344294546, MemAllocated=0.95GB, MaxMemAllocated=1.61GB
+step  50   50 loss nan
+[2022-12-09 201842,823] [INFO] [logging.py68log_dist] [Rank 0] step=50, skipped=0, lr=[0.001], mom=[[0.9, -0.999]]
+[2022-12-09 201842,882] [INFO] [timer.py198stop] 0200, RunningAvgSamplesPerSec=1013.2597941972082, CurrSamplesPerSec=725.4090858728756, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+[2022-12-09 201844,324] [INFO] [launch.py350main] Process 7003 exits successfully.
+(deepspeed) [rgulhane@o0762 Pipeline_Parallelism]$ deepspeed -H hosts AlexNet_pipeline_parallelism.py --deepspeed_config=ds_config.json -p 0 --steps=50
+
+
+   This system is for the use of authorized users only.  Individuals using
+   this computer system without authority, or in excess of their authority,
+   are subject to having all of their activities on this system monitored
+   and recorded by system personnel.  In the course of monitoring individuals
+   improperly using this system, or in the course of system maintenance,
+   the activities of authorized users may also be monitored.  Anyone using
+   this system expressly consents to such monitoring and is advised that if
+   such monitoring reveals possible evidence of criminal activity, system
+   personnel may provide the evidence of such monitoring to law enforcement
+   officials.
+
+
+[2022-12-09 202103,746] [INFO] [runner.py417main] Using IP address of 10.2.15.21 for node o0762
+[2022-12-09 202103,749] [INFO] [multinode_runner.py65get_cmd] Running on the following workers o0762,o0763
+[2022-12-09 202103,749] [INFO] [runner.py508main] cmd = pdsh -S -f 1024 -w o0762,o0763 export PYTHONNOUSERSITE=true; export CUDA_HOME=usrlocalcuda11.6.1; export MV2_CPU_BINDING_POLICY=hybrid; export CUDA_INSTALL_PATH=usrlocalcuda11.6.1; export PATH=usrlocalxaltxaltbinusrlocalcuda11.6.1binfsessPAS2312owensminiconda3envsdeepspeedbinfsessPAS2312owensminiconda3condabinoptmvapich2intel19.02.3.3binusrlocalgnu8.4.0binoptintelitac2019.5.041binoptinteladvisor_2019bin64optintelvtune_amplifier_2019bin64optintelinspector_2019bin64optintelcompilers_and_libraries_2019.5.281linuxbinintel64usrlocalsoftware_usageusrlib64qt-3.3binoptoscbinusrlocalbinusrbinusrlocalsbinusrsbinoptibutilsbinoptddnimebinoptpuppetlabsbinusrlocalcuda11.6.1nsight-compute-2022.1.1; export PYTHONPATH=usersPAS2312rgulhaneowenslab3Pipeline_Parallelism;  cd usersPAS2312rgulhaneowenslab3Pipeline_Parallelism; fsessPAS2312owensminiconda3envsdeepspeedbinpython -u -m deepspeed.launcher.launch --world_info=eyJvMDc2MiI6IFswXSwgIm8wNzYzIjogWzBdfQ== --node_rank=%n --master_addr=10.2.15.21 --master_port=29500 AlexNet_pipeline_parallelism.py --deepspeed_config=ds_config.json -p '0' --steps=50
+o0762 [2022-12-09 202107,881] [INFO] [launch.py142main] WORLD INFO DICT {'o0762' [0], 'o0763' [0]}
+o0762 [2022-12-09 202107,881] [INFO] [launch.py148main] nnodes=2, num_local_procs=1, node_rank=0
+o0762 [2022-12-09 202107,881] [INFO] [launch.py161main] global_rank_mapping=defaultdict(class 'list', {'o0762' [0], 'o0763' [1]})
+o0762 [2022-12-09 202107,881] [INFO] [launch.py162main] dist_world_size=2
+o0762 [2022-12-09 202107,881] [INFO] [launch.py164main] Setting CUDA_VISIBLE_DEVICES=0
+o0763 [2022-12-09 202108,453] [INFO] [launch.py142main] WORLD INFO DICT {'o0762' [0], 'o0763' [0]}
+o0763 [2022-12-09 202108,453] [INFO] [launch.py148main] nnodes=2, num_local_procs=1, node_rank=1
+o0763 [2022-12-09 202108,454] [INFO] [launch.py161main] global_rank_mapping=defaultdict(class 'list', {'o0762' [0], 'o0763' [1]})
+o0763 [2022-12-09 202108,454] [INFO] [launch.py162main] dist_world_size=2
+o0763 [2022-12-09 202108,454] [INFO] [launch.py164main] Setting CUDA_VISIBLE_DEVICES=0
+o0762 [2022-12-09 202111,453] [INFO] [comm.py633init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+o0763 Files already downloaded and verified
+o0762 Files already downloaded and verified
+o0762 [2022-12-09 202115,288] [INFO] [logging.py68log_dist] [Rank 0] DeepSpeed info version=0.7.5, git-hash=unknown, git-branch=unknown
+o0762 fsessPAS2312owensminiconda3envsdeepspeedlibpython3.9site-packagestorchdistributeddistributed_c10d.py429 UserWarning torch.distributed.distributed_c10d._get_global_rank is deprecated please use torch.distributed.distributed_c10d.get_global_rank instead
+o0762   warnings.warn(
+o0763 fsessPAS2312owensminiconda3envsdeepspeedlibpython3.9site-packagestorchdistributeddistributed_c10d.py429 UserWarning torch.distributed.distributed_c10d._get_global_rank is deprecated please use torch.distributed.distributed_c10d.get_global_rank instead
+o0763   warnings.warn(
+o0762 [2022-12-09 202115,594] [INFO] [logging.py68log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled False
+o0762 Using usersPAS2312rgulhane.cachetorch_extensionspy39_cu116 as PyTorch extensions root...
+o0763 Using usersPAS2312rgulhane.cachetorch_extensionspy39_cu116 as PyTorch extensions root...
+o0762 Detected CUDA files, patching ldflags
+o0762 Emitting ninja build file usersPAS2312rgulhane.cachetorch_extensionspy39_cu116fused_adambuild.ninja...
+o0762 Building extension module fused_adam...
+o0762 Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+o0762 ninja no work to do.
+o0762 Loading extension module fused_adam...
+o0762 Time to load fused_adam op 0.6885015964508057 seconds
+o0762 [2022-12-09 202116,834] [INFO] [logging.py68log_dist] [Rank 0] Using DeepSpeed Optimizer param name adam as basic optimizer
+o0762 [2022-12-09 202116,834] [INFO] [logging.py68log_dist] [Rank 0] DeepSpeed Basic Optimizer = FusedAdam
+o0762 [2022-12-09 202116,834] [INFO] [logging.py68log_dist] [Rank 0] DeepSpeed Final Optimizer = adam
+o0762 [2022-12-09 202116,835] [INFO] [logging.py68log_dist] [Rank 0] DeepSpeed using client LR scheduler
+o0762 [2022-12-09 202116,835] [INFO] [logging.py68log_dist] [Rank 0] DeepSpeed LR Scheduler = None
+o0762 [2022-12-09 202116,835] [INFO] [logging.py68log_dist] [Rank 0] step=0, skipped=0, lr=[0.001], mom=[[0.9, -0.999]]
+o0762 [2022-12-09 202116,835] [INFO] [config.py1007print] DeepSpeedEngine configuration
+o0762 [2022-12-09 202116,836] [INFO] [config.py1011print]   activation_checkpointing_config  {
+o0762     partition_activations false, 
+o0762     contiguous_memory_optimization false, 
+o0762     cpu_checkpointing false, 
+o0762     number_checkpoints null, 
+o0762     synchronize_checkpoint_boundary false, 
+o0762     profile false
+o0762 }
+o0762 [2022-12-09 202116,836] [INFO] [config.py1011print]   aio_config ................... {'block_size' 1048576, 'queue_depth' 8, 'thread_count' 1, 'single_submit' False, 'overlap_events' True}
+o0762 [2022-12-09 202116,836] [INFO] [config.py1011print]   amp_enabled .................. False
+o0762 [2022-12-09 202116,836] [INFO] [config.py1011print]   amp_params ................... False
+o0762 [2022-12-09 202116,837] [INFO] [config.py1011print]   autotuning_config ............ {
+o0762     enabled false, 
+o0762     start_step null, 
+o0762     end_step null, 
+o0762     metric_path null, 
+o0762     arg_mappings null, 
+o0762     metric throughput, 
+o0762     model_info null, 
+o0762     results_dir usersPAS2312rgulhaneowenslab3Pipeline_Parallelismautotuning_results, 
+o0762     exps_dir usersPAS2312rgulhaneowenslab3Pipeline_Parallelismautotuning_exps, 
+o0762     overwrite true, 
+o0762     fast true, 
+o0762     start_profile_step 3, 
+o0762     end_profile_step 5, 
+o0762     tuner_type gridsearch, 
+o0762     tuner_early_stopping 5, 
+o0762     tuner_num_trials 50, 
+o0762     model_info_path null, 
+o0762     mp_size 1, 
+o0762     max_train_batch_size null, 
+o0762     min_train_batch_size 1, 
+o0762     max_train_micro_batch_size_per_gpu 1.024000e+03, 
+o0762     min_train_micro_batch_size_per_gpu 1, 
+o0762     num_tuning_micro_batch_sizes 3
+o0762 }
+o0762 [2022-12-09 202116,837] [INFO] [config.py1011print]   bfloat16_enabled ............. False
+o0762 [2022-12-09 202116,837] [INFO] [config.py1011print]   checkpoint_parallel_write_pipeline  False
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   checkpoint_tag_validation_enabled  True
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   checkpoint_tag_validation_fail  False
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   comms_config ................. deepspeed.comm.config.DeepSpeedCommsConfig object at 0x2b0a5ad37f40
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   communication_data_type ...... None
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   compression_config ........... {'weight_quantization' {'shared_parameters' {'enabled' False, 'quantizer_kernel' False, 'schedule_offset' 0, 'quantize_groups' 1, 'quantize_verbose' False, 'quantization_type' 'symmetric', 'quantize_weight_in_forward' False, 'rounding' 'nearest', 'fp16_mixed_quantize' False, 'quantize_change_ratio' 0.001}, 'different_groups' {}}, 'activation_quantization' {'shared_parameters' {'enabled' False, 'quantization_type' 'symmetric', 'range_calibration' 'dynamic', 'schedule_offset' 1000}, 'different_groups' {}}, 'sparse_pruning' {'shared_parameters' {'enabled' False, 'method' 'l1', 'schedule_offset' 1000}, 'different_groups' {}}, 'row_pruning' {'shared_parameters' {'enabled' False, 'method' 'l1', 'schedule_offset' 1000}, 'different_groups' {}}, 'head_pruning' {'shared_parameters' {'enabled' False, 'method' 'topk', 'schedule_offset' 1000}, 'different_groups' {}}, 'channel_pruning' {'shared_parameters' {'enabled' False, 'method' 'l1', 'schedule_offset' 1000}, 'different_groups' {}}, 'layer_reduction' {'enabled' False}}
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   curriculum_enabled ........... False
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   curriculum_params ............ False
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   dataloader_drop_last ......... False
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   disable_allgather ............ False
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   dump_state ................... False
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   dynamic_loss_scale_args ...... None
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   eigenvalue_enabled ........... False
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   eigenvalue_gas_boundary_resolution  1
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   eigenvalue_layer_name ........ bert.encoder.layer
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   eigenvalue_layer_num ......... 0
+o0762 [2022-12-09 202116,838] [INFO] [config.py1011print]   eigenvalue_max_iter .......... 100
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   eigenvalue_stability ......... 1e-06
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   eigenvalue_tol ............... 0.01
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   eigenvalue_verbose ........... False
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   elasticity_enabled ........... False
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   flops_profiler_config ........ {
+o0762     enabled false, 
+o0762     profile_step 1, 
+o0762     module_depth -1, 
+o0762     top_modules 1, 
+o0762     detailed true, 
+o0762     output_file null
+o0762 }
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   fp16_auto_cast ............... None
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   fp16_enabled ................. False
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   fp16_master_weights_and_gradients  False
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   global_rank .................. 0
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   gradient_accumulation_steps .. 2
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   gradient_clipping ............ 0.0
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   gradient_predivide_factor .... 1.0
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   initial_dynamic_scale ........ 4294967296
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   load_universal_checkpoint .... False
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   loss_scale ................... 0
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   memory_breakdown ............. False
+o0762 [2022-12-09 202116,839] [INFO] [config.py1011print]   monitor_config ............... deepspeed.monitor.config.DeepSpeedMonitorConfig object at 0x2b0a5ad37f70
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   nebula_config ................ {
+o0762     enabled false, 
+o0762     persistent_storage_path null, 
+o0762     persistent_time_interval 100, 
+o0762     num_of_version_in_retention 2, 
+o0762     enable_nebula_load true, 
+o0762     load_path null
+o0762 }
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   optimizer_legacy_fusion ...... False
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   optimizer_name ............... adam
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   optimizer_params ............. {'lr' 0.001, 'betas' [0.9, -0.999], 'eps' 1e-08}
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   pipeline ..................... {'stages' 'auto', 'partition' 'best', 'seed_layers' False, 'activation_checkpoint_interval' 0}
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   pld_enabled .................. False
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   pld_params ................... False
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   prescale_gradients ........... False
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   scheduler_name ............... None
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   scheduler_params ............. None
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   sparse_attention ............. None
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   sparse_gradients_enabled ..... False
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   steps_per_print .............. 10
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   train_batch_size ............. 512
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   train_micro_batch_size_per_gpu  128
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   use_node_local_storage ....... False
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   wall_clock_breakdown ......... False
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   world_size ................... 2
+o0762 [2022-12-09 202116,840] [INFO] [config.py1011print]   zero_allow_untested_optimizer  False
+o0762 [2022-12-09 202116,841] [INFO] [config.py1011print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500000000 allgather_partitions=True allgather_bucket_size=500000000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1000000000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50000000 param_persistence_threshold=100000 model_persistence_threshold=9223372036854775807 max_live_parameters=1000000000 max_reuse_distance=1000000000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False
+o0762 [2022-12-09 202116,841] [INFO] [config.py1011print]   zero_enabled ................. False
+o0762 [2022-12-09 202116,841] [INFO] [config.py1011print]   zero_optimization_stage ...... 0
+o0762 [2022-12-09 202116,841] [INFO] [config.py996print_user_config]   json = {
+o0762     train_batch_size 512, 
+o0762     train_micro_batch_size_per_gpu 128, 
+o0762     optimizer {
+o0762         type Adam, 
+o0762         params {
+o0762             lr 0.001, 
+o0762             betas [0.9, -0.999], 
+o0762             eps 1e-08
+o0762         }
+o0762     }, 
+o0762     steps_per_print 10, 
+o0762     wall_clock_breakdown false
+o0762 }
+o0762 Using usersPAS2312rgulhane.cachetorch_extensionspy39_cu116 as PyTorch extensions root...
+o0762 Emitting ninja build file usersPAS2312rgulhane.cachetorch_extensionspy39_cu116utilsbuild.ninja...
+o0762 Building extension module utils...
+o0762 Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+o0762 ninja no work to do.
+o0762 Loading extension module utils...
+o0762 Time to load utils op 0.6070325374603271 seconds
+o0763 Loading extension module fused_adam...
+o0763 Time to load fused_adam op 3.0190582275390625 seconds
+o0763 Using usersPAS2312rgulhane.cachetorch_extensionspy39_cu116 as PyTorch extensions root...
+o0763 Emitting ninja build file usersPAS2312rgulhane.cachetorch_extensionspy39_cu116utilsbuild.ninja...
+o0763 Building extension module utils...
+o0763 Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+o0763 ninja no work to do.
+o0763 Loading extension module utils...
+o0763 Time to load utils op 0.6922788619995117 seconds
+o0762 [2022-12-09 202123,277] [INFO] [timer.py198stop] 010, RunningAvgSamplesPerSec=1827.061386964977, CurrSamplesPerSec=1203.8638566766042, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+o0762 step  10   50 loss nan
+o0762 [2022-12-09 202125,014] [INFO] [logging.py68log_dist] [Rank 0] step=10, skipped=0, lr=[0.001], mom=[[0.9, -0.999]]
+o0762 [2022-12-09 202125,107] [INFO] [timer.py198stop] 020, RunningAvgSamplesPerSec=1562.901267554723, CurrSamplesPerSec=918.0497644473704, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+o0762 [2022-12-09 202126,667] [INFO] [timer.py198stop] 030, RunningAvgSamplesPerSec=1590.4295600710852, CurrSamplesPerSec=1222.449088236734, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+o0762 step  20   50 loss nan
+o0762 [2022-12-09 202128,178] [INFO] [logging.py68log_dist] [Rank 0] step=20, skipped=0, lr=[0.001], mom=[[0.9, -0.999]]
+o0762 [2022-12-09 202128,269] [INFO] [timer.py198stop] 040, RunningAvgSamplesPerSec=1593.1607293051618, CurrSamplesPerSec=1222.7734523755296, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+o0762 [2022-12-09 202129,894] [INFO] [timer.py198stop] 050, RunningAvgSamplesPerSec=1589.7994786750558, CurrSamplesPerSec=1093.8645563791508, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+o0762 step  30   50 loss nan
+o0762 [2022-12-09 202131,412] [INFO] [logging.py68log_dist] [Rank 0] step=30, skipped=0, lr=[0.001], mom=[[0.9, -0.999]]
+o0762 [2022-12-09 202131,504] [INFO] [timer.py198stop] 060, RunningAvgSamplesPerSec=1590.3715562201999, CurrSamplesPerSec=1221.6062683242335, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+o0762 [2022-12-09 202133,164] [INFO] [timer.py198stop] 070, RunningAvgSamplesPerSec=1583.2830241384897, CurrSamplesPerSec=1336.6918308989484, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+o0762 step  40   50 loss nan
+o0762 [2022-12-09 202134,756] [INFO] [logging.py68log_dist] [Rank 0] step=40, skipped=0, lr=[0.001], mom=[[0.9, -0.999]]
+o0762 [2022-12-09 202134,847] [INFO] [timer.py198stop] 080, RunningAvgSamplesPerSec=1575.2540385700136, CurrSamplesPerSec=1215.8132496628534, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+o0762 [2022-12-09 202136,452] [INFO] [timer.py198stop] 090, RunningAvgSamplesPerSec=1577.6836807792486, CurrSamplesPerSec=1900.044635241739, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+o0762 step  50   50 loss nan
+o0762 [2022-12-09 202138,014] [INFO] [logging.py68log_dist] [Rank 0] step=50, skipped=0, lr=[0.001], mom=[[0.9, -0.999]]
+o0762 [2022-12-09 202138,106] [INFO] [timer.py198stop] 0100, RunningAvgSamplesPerSec=1574.7692523563765, CurrSamplesPerSec=2338.878775997421, MemAllocated=0.73GB, MaxMemAllocated=1.61GB
+o0763 [2022-12-09 202139,502] [INFO] [launch.py350main] Process 28208 exits successfully.
+o0762 [2022-12-09 202139,927] [INFO] [launch.py350main] Process 7816 exits successfully.

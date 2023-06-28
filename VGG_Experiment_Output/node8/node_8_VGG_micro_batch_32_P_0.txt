@@ -1,0 +1,237 @@
+(deepspeed) [rgulhane@o0678 Pipeline_Parallelism]$ deepspeed -H hosts VGG_pipeline_parallelism.py --deepspeed_config=ds_config.json -p 0 --steps=50
+******************************************************************************
+
+   This system is for the use of authorized users only.  Individuals using
+   this computer system without authority, or in excess of their authority,
+   are subject to having all of their activities on this system monitored
+   and recorded by system personnel.  In the course of monitoring individuals
+   improperly using this system, or in the course of system maintenance,
+   the activities of authorized users may also be monitored.  Anyone using
+   this system expressly consents to such monitoring and is advised that if
+   such monitoring reveals possible evidence of criminal activity, system
+   personnel may provide the evidence of such monitoring to law enforcement
+   officials.
+
+******************************************************************************
+[2022-12-09 17:01:13,056] [INFO] [runner.py:417:main] Using IP address of 10.2.11.12 for node o0678
+[2022-12-09 17:01:13,059] [INFO] [multinode_runner.py:65:get_cmd] Running on the following workers: o0678,o0679,o0680,o0681,o0682,o0683,o0684,o0685
+[2022-12-09 17:01:13,059] [INFO] [runner.py:508:main] cmd = pdsh -S -f 1024 -w o0678,o0679,o0680,o0681,o0682,o0683,o0684,o0685 export PYTHONNOUSERSITE=true; export CUDA_HOME=/usr/local/cuda/11.6.1; export MV2_CPU_BINDING_POLICY=hybrid; export CUDA_INSTALL_PATH=/usr/local/cuda/11.6.1; export PATH=/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/bin:/fs/ess/PAS2312/owens/miniconda3/condabin:/usr/local/xalt/xalt/bin:/usr/local/cuda/11.6.1/bin:/opt/mvapich2/intel/19.0/2.3.3/bin:/usr/local/gnu/8.4.0/bin:/opt/intel/itac/2019.5.041/bin:/opt/intel/advisor_2019/bin64:/opt/intel/vtune_amplifier_2019/bin64:/opt/intel/inspector_2019/bin64:/opt/intel/compilers_and_libraries_2019.5.281/linux/bin/intel64:/usr/local/software_usage:/usr/lib64/qt-3.3/bin:/opt/osc/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibutils/bin:/opt/ddn/ime/bin:/opt/puppetlabs/bin:/usr/local/cuda/11.6.1/nsight-compute-2022.1.1; export PYTHONPATH=/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism;  cd /users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism; /fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/bin/python -u -m deepspeed.launcher.launch --world_info=eyJvMDY3OCI6IFswXSwgIm8wNjc5IjogWzBdLCAibzA2ODAiOiBbMF0sICJvMDY4MSI6IFswXSwgIm8wNjgyIjogWzBdLCAibzA2ODMiOiBbMF0sICJvMDY4NCI6IFswXSwgIm8wNjg1IjogWzBdfQ== --node_rank=%n --master_addr=10.2.11.12 --master_port=29500 VGG_pipeline_parallelism.py --deepspeed_config=ds_config.json -p '0' --steps=50
+o0678: [2022-12-09 17:01:17,242] [INFO] [launch.py:142:main] WORLD INFO DICT: {'o0678': [0], 'o0679': [0], 'o0680': [0], 'o0681': [0], 'o0682': [0], 'o0683': [0], 'o0684': [0], 'o0685': [0]}
+o0678: [2022-12-09 17:01:17,242] [INFO] [launch.py:148:main] nnodes=8, num_local_procs=1, node_rank=0
+o0678: [2022-12-09 17:01:17,242] [INFO] [launch.py:161:main] global_rank_mapping=defaultdict(<class 'list'>, {'o0678': [0], 'o0679': [1], 'o0680': [2], 'o0681': [3], 'o0682': [4], 'o0683': [5], 'o0684': [6], 'o0685': [7]})
+o0678: [2022-12-09 17:01:17,242] [INFO] [launch.py:162:main] dist_world_size=8
+o0678: [2022-12-09 17:01:17,242] [INFO] [launch.py:164:main] Setting CUDA_VISIBLE_DEVICES=0
+o0684: [2022-12-09 17:01:17,268] [INFO] [launch.py:142:main] WORLD INFO DICT: {'o0678': [0], 'o0679': [0], 'o0680': [0], 'o0681': [0], 'o0682': [0], 'o0683': [0], 'o0684': [0], 'o0685': [0]}
+o0684: [2022-12-09 17:01:17,268] [INFO] [launch.py:148:main] nnodes=8, num_local_procs=1, node_rank=6
+o0684: [2022-12-09 17:01:17,269] [INFO] [launch.py:161:main] global_rank_mapping=defaultdict(<class 'list'>, {'o0678': [0], 'o0679': [1], 'o0680': [2], 'o0681': [3], 'o0682': [4], 'o0683': [5], 'o0684': [6], 'o0685': [7]})
+o0684: [2022-12-09 17:01:17,269] [INFO] [launch.py:162:main] dist_world_size=8
+o0684: [2022-12-09 17:01:17,269] [INFO] [launch.py:164:main] Setting CUDA_VISIBLE_DEVICES=0
+o0682: [2022-12-09 17:01:17,287] [INFO] [launch.py:142:main] WORLD INFO DICT: {'o0678': [0], 'o0679': [0], 'o0680': [0], 'o0681': [0], 'o0682': [0], 'o0683': [0], 'o0684': [0], 'o0685': [0]}
+o0682: [2022-12-09 17:01:17,287] [INFO] [launch.py:148:main] nnodes=8, num_local_procs=1, node_rank=4
+o0682: [2022-12-09 17:01:17,287] [INFO] [launch.py:161:main] global_rank_mapping=defaultdict(<class 'list'>, {'o0678': [0], 'o0679': [1], 'o0680': [2], 'o0681': [3], 'o0682': [4], 'o0683': [5], 'o0684': [6], 'o0685': [7]})
+o0682: [2022-12-09 17:01:17,287] [INFO] [launch.py:162:main] dist_world_size=8
+o0682: [2022-12-09 17:01:17,287] [INFO] [launch.py:164:main] Setting CUDA_VISIBLE_DEVICES=0
+o0679: [2022-12-09 17:01:17,347] [INFO] [launch.py:142:main] WORLD INFO DICT: {'o0678': [0], 'o0679': [0], 'o0680': [0], 'o0681': [0], 'o0682': [0], 'o0683': [0], 'o0684': [0], 'o0685': [0]}
+o0679: [2022-12-09 17:01:17,347] [INFO] [launch.py:148:main] nnodes=8, num_local_procs=1, node_rank=1
+o0679: [2022-12-09 17:01:17,347] [INFO] [launch.py:161:main] global_rank_mapping=defaultdict(<class 'list'>, {'o0678': [0], 'o0679': [1], 'o0680': [2], 'o0681': [3], 'o0682': [4], 'o0683': [5], 'o0684': [6], 'o0685': [7]})
+o0679: [2022-12-09 17:01:17,347] [INFO] [launch.py:162:main] dist_world_size=8
+o0679: [2022-12-09 17:01:17,347] [INFO] [launch.py:164:main] Setting CUDA_VISIBLE_DEVICES=0
+o0680: [2022-12-09 17:01:17,351] [INFO] [launch.py:142:main] WORLD INFO DICT: {'o0678': [0], 'o0679': [0], 'o0680': [0], 'o0681': [0], 'o0682': [0], 'o0683': [0], 'o0684': [0], 'o0685': [0]}
+o0680: [2022-12-09 17:01:17,351] [INFO] [launch.py:148:main] nnodes=8, num_local_procs=1, node_rank=2
+o0680: [2022-12-09 17:01:17,351] [INFO] [launch.py:161:main] global_rank_mapping=defaultdict(<class 'list'>, {'o0678': [0], 'o0679': [1], 'o0680': [2], 'o0681': [3], 'o0682': [4], 'o0683': [5], 'o0684': [6], 'o0685': [7]})
+o0680: [2022-12-09 17:01:17,351] [INFO] [launch.py:162:main] dist_world_size=8
+o0680: [2022-12-09 17:01:17,351] [INFO] [launch.py:164:main] Setting CUDA_VISIBLE_DEVICES=0
+o0685: [2022-12-09 17:01:17,403] [INFO] [launch.py:142:main] WORLD INFO DICT: {'o0678': [0], 'o0679': [0], 'o0680': [0], 'o0681': [0], 'o0682': [0], 'o0683': [0], 'o0684': [0], 'o0685': [0]}
+o0685: [2022-12-09 17:01:17,403] [INFO] [launch.py:148:main] nnodes=8, num_local_procs=1, node_rank=7
+o0685: [2022-12-09 17:01:17,403] [INFO] [launch.py:161:main] global_rank_mapping=defaultdict(<class 'list'>, {'o0678': [0], 'o0679': [1], 'o0680': [2], 'o0681': [3], 'o0682': [4], 'o0683': [5], 'o0684': [6], 'o0685': [7]})
+o0685: [2022-12-09 17:01:17,403] [INFO] [launch.py:162:main] dist_world_size=8
+o0685: [2022-12-09 17:01:17,403] [INFO] [launch.py:164:main] Setting CUDA_VISIBLE_DEVICES=0
+o0681: [2022-12-09 17:01:17,516] [INFO] [launch.py:142:main] WORLD INFO DICT: {'o0678': [0], 'o0679': [0], 'o0680': [0], 'o0681': [0], 'o0682': [0], 'o0683': [0], 'o0684': [0], 'o0685': [0]}
+o0681: [2022-12-09 17:01:17,516] [INFO] [launch.py:148:main] nnodes=8, num_local_procs=1, node_rank=3
+o0681: [2022-12-09 17:01:17,516] [INFO] [launch.py:161:main] global_rank_mapping=defaultdict(<class 'list'>, {'o0678': [0], 'o0679': [1], 'o0680': [2], 'o0681': [3], 'o0682': [4], 'o0683': [5], 'o0684': [6], 'o0685': [7]})
+o0681: [2022-12-09 17:01:17,516] [INFO] [launch.py:162:main] dist_world_size=8
+o0681: [2022-12-09 17:01:17,516] [INFO] [launch.py:164:main] Setting CUDA_VISIBLE_DEVICES=0
+o0683: [2022-12-09 17:01:17,588] [INFO] [launch.py:142:main] WORLD INFO DICT: {'o0678': [0], 'o0679': [0], 'o0680': [0], 'o0681': [0], 'o0682': [0], 'o0683': [0], 'o0684': [0], 'o0685': [0]}
+o0683: [2022-12-09 17:01:17,588] [INFO] [launch.py:148:main] nnodes=8, num_local_procs=1, node_rank=5
+o0683: [2022-12-09 17:01:17,588] [INFO] [launch.py:161:main] global_rank_mapping=defaultdict(<class 'list'>, {'o0678': [0], 'o0679': [1], 'o0680': [2], 'o0681': [3], 'o0682': [4], 'o0683': [5], 'o0684': [6], 'o0685': [7]})
+o0683: [2022-12-09 17:01:17,588] [INFO] [launch.py:162:main] dist_world_size=8
+o0683: [2022-12-09 17:01:17,588] [INFO] [launch.py:164:main] Setting CUDA_VISIBLE_DEVICES=0
+o0678: [2022-12-09 17:01:20,568] [INFO] [comm.py:633:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+o0685: Files already downloaded and verified
+o0683: Files already downloaded and verified
+o0684: Files already downloaded and verified
+o0679: Files already downloaded and verified
+o0681: Files already downloaded and verified
+o0682: Files already downloaded and verified
+o0680: Files already downloaded and verified
+o0678: Files already downloaded and verified
+o0678: [2022-12-09 17:01:26,083] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed info: version=0.7.5, git-hash=unknown, git-branch=unknown
+o0678: Traceback (most recent call last):
+o0678:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 157, in <module>
+o0681: Traceback (most recent call last):
+o0681:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 157, in <module>
+o0682: Traceback (most recent call last):
+o0682:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 157, in <module>
+o0680: Traceback (most recent call last):
+o0679: Traceback (most recent call last):
+o0683: Traceback (most recent call last):
+o0678:     train_base(args)
+o0678:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 77, in train_base
+o0679:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 157, in <module>
+o0683:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 157, in <module>
+o0680:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 157, in <module>
+o0685: Traceback (most recent call last):
+o0685:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 157, in <module>
+o0681:     train_base(args)
+o0681:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 77, in train_base
+o0682:     train_base(args)
+o0682:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 77, in train_base
+o0684: Traceback (most recent call last):
+o0684:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 157, in <module>
+o0678:     engine, _, dataloader, __ = deepspeed.initialize(
+o0680:     train_base(args)
+o0683:     train_base(args)
+o0678:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/__init__.py", line 124, in initialize
+o0680:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 77, in train_base
+o0683:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 77, in train_base
+o0679:     train_base(args)
+o0679:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 77, in train_base
+o0685:     train_base(args)
+o0685:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 77, in train_base
+o0681:     engine, _, dataloader, __ = deepspeed.initialize(
+o0681:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/__init__.py", line 124, in initialize
+o0682:     engine, _, dataloader, __ = deepspeed.initialize(
+o0682:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/__init__.py", line 124, in initialize
+o0680:     engine, _, dataloader, __ = deepspeed.initialize(
+o0680:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/__init__.py", line 124, in initialize
+o0684:     train_base(args)
+o0684:   File "/users/PAS2312/rgulhane/owens/lab3/Pipeline_Parallelism/VGG_pipeline_parallelism.py", line 77, in train_base
+o0683:     engine, _, dataloader, __ = deepspeed.initialize(
+o0683:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/__init__.py", line 124, in initialize
+o0678:     engine = DeepSpeedEngine(args=args,
+o0678:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 262, in __init__
+o0682:     engine = DeepSpeedEngine(args=args,
+o0682:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 262, in __init__
+o0679:     engine, _, dataloader, __ = deepspeed.initialize(
+o0679:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/__init__.py", line 124, in initialize
+o0680:     engine = DeepSpeedEngine(args=args,
+o0681:     engine = DeepSpeedEngine(args=args,
+o0680:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 262, in __init__
+o0685:     engine, _, dataloader, __ = deepspeed.initialize(
+o0678:     self._configure_with_arguments(args, mpu)
+o0681:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 262, in __init__
+o0685:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/__init__.py", line 124, in initialize
+o0683:     engine = DeepSpeedEngine(args=args,
+o0684:     engine, _, dataloader, __ = deepspeed.initialize(
+o0678:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 906, in _configure_with_arguments
+o0680:     self._configure_with_arguments(args, mpu)
+o0685:     engine = DeepSpeedEngine(args=args,
+o0683:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 262, in __init__
+o0681:     self._configure_with_arguments(args, mpu)
+o0679:     engine = DeepSpeedEngine(args=args,
+o0684:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/__init__.py", line 124, in initialize
+o0678:     self._config = DeepSpeedConfig(self.config, mpu)
+o0680:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 906, in _configure_with_arguments
+o0685:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 262, in __init__
+o0683:     self._configure_with_arguments(args, mpu)
+o0681:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 906, in _configure_with_arguments
+o0679:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 262, in __init__
+o0678:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 812, in __init__
+o0681:     self._config = DeepSpeedConfig(self.config, mpu)
+o0684:     engine = DeepSpeedEngine(args=args,
+o0680:     self._config = DeepSpeedConfig(self.config, mpu)
+o0685:     self._configure_with_arguments(args, mpu)
+o0683:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 906, in _configure_with_arguments
+o0678:     self._configure_train_batch_size()
+o0679:     self._configure_with_arguments(args, mpu)
+o0681:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 812, in __init__
+o0684:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 262, in __init__
+o0680:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 812, in __init__
+o0684:     self._configure_with_arguments(args, mpu)
+o0685:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 906, in _configure_with_arguments
+o0683:     self._config = DeepSpeedConfig(self.config, mpu)
+o0678:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 988, in _configure_train_batch_size
+o0679:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 906, in _configure_with_arguments
+o0681:     self._configure_train_batch_size()
+o0684:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 906, in _configure_with_arguments
+o0680:     self._configure_train_batch_size()
+o0685:     self._config = DeepSpeedConfig(self.config, mpu)
+o0683:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 812, in __init__
+o0678:     self._batch_assertion()
+o0681:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 988, in _configure_train_batch_size
+o0684:     self._config = DeepSpeedConfig(self.config, mpu)
+o0680:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 988, in _configure_train_batch_size
+o0684:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 812, in __init__
+o0683:     self._configure_train_batch_size()
+o0678:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 931, in _batch_assertion
+o0685:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 812, in __init__
+o0681:     self._batch_assertion()
+o0679:     self._config = DeepSpeedConfig(self.config, mpu)
+o0681:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 931, in _batch_assertion
+o0680:     self._batch_assertion()
+o0683:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 988, in _configure_train_batch_size
+o0678:     assert (
+o0685:     self._configure_train_batch_size()
+o0685:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 988, in _configure_train_batch_size
+o0679:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 812, in __init__
+o0684:     self._configure_train_batch_size()
+o0680:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 931, in _batch_assertion
+o0681:     assert (
+o0678: AssertionError: Gradient accumulation steps: 0 has to be greater than 0
+o0683:     self._batch_assertion()
+o0685:     self._batch_assertion()
+o0684:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 988, in _configure_train_batch_size
+o0680:     assert (
+o0681: AssertionError: Gradient accumulation steps: 0 has to be greater than 0
+o0683:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 931, in _batch_assertion
+o0685:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 931, in _batch_assertion
+o0680: AssertionError: Gradient accumulation steps: 0 has to be greater than 0
+o0684:     self._batch_assertion()
+o0679:     self._configure_train_batch_size()
+o0685:     assert (
+o0683:     assert (
+o0684:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 931, in _batch_assertion
+o0679:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 988, in _configure_train_batch_size
+o0685: AssertionError: Gradient accumulation steps: 0 has to be greater than 0
+o0683: AssertionError: Gradient accumulation steps: 0 has to be greater than 0
+o0684:     assert (
+o0684: AssertionError: Gradient accumulation steps: 0 has to be greater than 0
+o0679:     self._batch_assertion()
+o0679:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 931, in _batch_assertion
+o0679:     assert (
+o0679: AssertionError: Gradient accumulation steps: 0 has to be greater than 0
+o0682:     self._configure_with_arguments(args, mpu)
+o0682:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 906, in _configure_with_arguments
+o0682:     self._config = DeepSpeedConfig(self.config, mpu)
+o0682:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 812, in __init__
+o0682:     self._configure_train_batch_size()
+o0682:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 988, in _configure_train_batch_size
+o0682:     self._batch_assertion()
+o0682:   File "/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 931, in _batch_assertion
+o0682:     assert (
+o0682: AssertionError: Gradient accumulation steps: 0 has to be greater than 0
+o0683: [2022-12-09 17:01:26,612] [INFO] [launch.py:318:sigkill_handler] Killing subprocess 4897
+o0683: [2022-12-09 17:01:26,613] [ERROR] [launch.py:324:sigkill_handler] ['/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/bin/python', '-u', 'VGG_pipeline_parallelism.py', '--local_rank=0', '--deepspeed_config=ds_config.json', '-p', '0', '--steps=50'] exits with return code = 1
+pdsh@o0678: o0683: ssh exited with exit code 1
+o0678: [2022-12-09 17:01:27,267] [INFO] [launch.py:318:sigkill_handler] Killing subprocess 2325
+o0678: [2022-12-09 17:01:27,268] [ERROR] [launch.py:324:sigkill_handler] ['/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/bin/python', '-u', 'VGG_pipeline_parallelism.py', '--local_rank=0', '--deepspeed_config=ds_config.json', '-p', '0', '--steps=50'] exits with return code = 1
+o0684: [2022-12-09 17:01:27,291] [INFO] [launch.py:318:sigkill_handler] Killing subprocess 16066
+o0684: [2022-12-09 17:01:27,292] [ERROR] [launch.py:324:sigkill_handler] ['/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/bin/python', '-u', 'VGG_pipeline_parallelism.py', '--local_rank=0', '--deepspeed_config=ds_config.json', '-p', '0', '--steps=50'] exits with return code = 1
+o0682: [2022-12-09 17:01:27,311] [INFO] [launch.py:318:sigkill_handler] Killing subprocess 4116
+o0682: [2022-12-09 17:01:27,312] [ERROR] [launch.py:324:sigkill_handler] ['/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/bin/python', '-u', 'VGG_pipeline_parallelism.py', '--local_rank=0', '--deepspeed_config=ds_config.json', '-p', '0', '--steps=50'] exits with return code = 1
+o0679: [2022-12-09 17:01:27,372] [INFO] [launch.py:318:sigkill_handler] Killing subprocess 21627
+o0679: [2022-12-09 17:01:27,373] [ERROR] [launch.py:324:sigkill_handler] ['/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/bin/python', '-u', 'VGG_pipeline_parallelism.py', '--local_rank=0', '--deepspeed_config=ds_config.json', '-p', '0', '--steps=50'] exits with return code = 1
+o0680: [2022-12-09 17:01:27,375] [INFO] [launch.py:318:sigkill_handler] Killing subprocess 5795
+o0680: [2022-12-09 17:01:27,376] [ERROR] [launch.py:324:sigkill_handler] ['/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/bin/python', '-u', 'VGG_pipeline_parallelism.py', '--local_rank=0', '--deepspeed_config=ds_config.json', '-p', '0', '--steps=50'] exits with return code = 1
+o0685: [2022-12-09 17:01:27,428] [INFO] [launch.py:318:sigkill_handler] Killing subprocess 7615
+o0685: [2022-12-09 17:01:27,428] [ERROR] [launch.py:324:sigkill_handler] ['/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/bin/python', '-u', 'VGG_pipeline_parallelism.py', '--local_rank=0', '--deepspeed_config=ds_config.json', '-p', '0', '--steps=50'] exits with return code = 1
+pdsh@o0678: o0678: ssh exited with exit code 1
+o0681: [2022-12-09 17:01:27,541] [INFO] [launch.py:318:sigkill_handler] Killing subprocess 32692
+o0681: [2022-12-09 17:01:27,542] [ERROR] [launch.py:324:sigkill_handler] ['/fs/ess/PAS2312/owens/miniconda3/envs/deepspeed/bin/python', '-u', 'VGG_pipeline_parallelism.py', '--local_rank=0', '--deepspeed_config=ds_config.json', '-p', '0', '--steps=50'] exits with return code = 1
+pdsh@o0678: o0684: ssh exited with exit code 1
+pdsh@o0678: o0682: ssh exited with exit code 1
+pdsh@o0678: o0679: ssh exited with exit code 1
+pdsh@o0678: o0680: ssh exited with exit code 1
+pdsh@o0678: o0685: ssh exited with exit code 1
+pdsh@o0678: o0681: ssh exited with exit code 1
+(deepspeed) [rgulhane@o0678 Pipeline_Parallelism]$
